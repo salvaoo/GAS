@@ -1,56 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <!-- Use this CSS stylesheet to ensure that add-ons styling 
+
+<head>
+  <!-- Use this CSS stylesheet to ensure that add-ons styling
      matches the default Google Docs styles -->
-    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
-    <!-- Load the jQuery library from the Google CDN -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <base target="_top">
-  </head>
-  <body>
-  <script>
- // Attach click handlers after the Sidebar has loaded in Google Docs
- $(function() {
+  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  <!-- Load the jQuery library from the Google CDN -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <base target="_top">
+</head>
 
-   // Use Static Maps to generate an image of the address entered by the user 
-   $('#eliminaduplicados').click(function() {
-     
-     google.script.run.eliminaduplicados($('#search').val());
-
-   });
-   
-   $('#search').keyup(function(e) {
-      if (e.keyCode === 13) {
-         $('#eliminaduplicados').click();
-      }
-   });
-
-   
- });
-</script>
+<body>
   <img src="https://image.ibb.co/nvWj6V/Copia-de-logo-Elimina-Duplicados.jpg" width="100%">
-<!-- The sidebar will have a input box and the search button -->
-<div class="sidebar">
-    <!-- The search box for Google Maps -->
+  <div class="sidebar">
     <div class="block form-group">
-    <p>Para usar este complemento sólo tienes que poner el nombre de la hoja en la que deseas comprobar los duplicados y hacer click en ¡Vamos!.<p>
-    <p />   
-       <input type="text" id="search" placeholder="Nombre de la hoja" />
-        <button class="action" id="eliminaduplicados">¡Vamos!</button>
+      <p>Este complemento te ofrece la oportunidad de localizar datos duplicados
+        en una o dos hojas automaticamente. Te ofrecemos varias posibilidades de
+        buscar duplicados, elige la que desee usar y haga clic en ¡BUSCAR!.<p>
+          <ol>
+            <li>Buscar duplicados en toda una hoja. Esta opción te permite buscar
+              duplicados en la hoja donde estes y crearte automaticamente una nueva
+              hoja con todos los datos sin duplicados.</li>
+            <p></p>
+            <button class="action" id="option1" onclick="google.script.run.TodaLaHoja();">¡BUSCAR!</button>
+            <p></p>
+            <li>Buscar duplicados por columnas. Aqui tomamos las <b>columnas seleccionadas
+              por ti</b> como referencia para buscar duplicados que coincidan solo en
+              esas columnas.</li>
+            <p></p>
+            <button class="action" id="option2" onclick="google.script.run.seleccionColumnas();">¡BUSCAR!</button>
+            <p></p>
+            <li>Esta ultima opción te permite buscar duplicados entre la hoja actual
+              y una segunda hoja. <b>Tienes que seleccionar las columnas</b> y este apartado
+              te crea una hoja nueva con los datos de la HojaA pero sin los datos que
+              están en la hojaB.</li>
+            <p></p>
+            <input type="text" id="search" placeholder="Nombre de la hojaB" />
+            <p></p>
+            <button class="action" id="option3" onclick="google.script.run.eliminarDesdeDistintaTabla2($('#search').val());">¡BUSCAR!</button>
+          </ol>
     </div>
-    
     <div class="footer">
-    <p>Hecho con cariño <a href="http://xdiez.es" target="_blank"><img src="https://image.ibb.co/hSotm8/xdiez_1_1.png" width="25%"></a><p></p>A través de <a href="https://sites.google.com/eusa.es/goome"target="_blank"><img src="https://image.ibb.co/c9Z5zT/goome.png" width="25%"></a><p/>
-    
-</div>
+      <p>Hecho con cariño <a href="http://xdiez.es" target="_blank">
+        <img src="https://image.ibb.co/hSotm8/xdiez_1_1.png" width="25%"></a></p>
+      <p></p>A través de <a href="https://sites.google.com/eusa.es/goome" target="_blank">
+        <img src="https://image.ibb.co/c9Z5zT/goome.png" width="25%"></a><p/>
+    </div>
+  </div>
 
-</div>
+</body>
 
-  </body>
 </html>
-
-
-
-    
-
