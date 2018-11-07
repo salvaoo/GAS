@@ -20,6 +20,13 @@ function onOpen() {
 }
 */
 
+/************************************************************************
+  Funcion que llama directamente a la funcion onOpen cuando se instala.
+************************************************************************/
+function onInstall(e) {
+  onOpen();
+}
+
 function onOpen() {
   SpreadsheetApp.getUi()
     .createAddonMenu()  //Add a new option in the Google Docs Add-ons Menu
